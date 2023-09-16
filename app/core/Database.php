@@ -43,7 +43,7 @@
                         $type = PDO::PARAM_STR;
                 }
             }
-            $this->stmt->bind->bindValue($param, $value, $type);
+            $this->stmt->bindValue($param, $value, $type);
         }
 
         public function execute() {
@@ -58,6 +58,10 @@
         public function single(){
             $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);        
+        }
+
+        public function rowCount(){
+            return $this->stmt->rowCount();
         }
     }
 ?>

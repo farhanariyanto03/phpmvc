@@ -7,5 +7,10 @@
             $this->view('home/index');
             $this->view('templates/footer');
         }
+
+        public function add() 
+        {
+            
+        }
     }
 ?>
