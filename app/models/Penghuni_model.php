@@ -36,8 +36,17 @@
         public function getPenghuniById($id_Penghuni)
         {
             $this->db->query('SELECT * FROM tb_penghuni WHERE id_Penghuni = :id');
-            $this->db->bind(':id', $id_Penghuni);
+            $this->db->bind('id', $id_Penghuni);
             return $this->db->single();
-        }   
+        }
+        
+        public function updatePenghuni($id_Penghuni, $nama_penghuni, $alamat)
+        {
+            $this->db->query('UPDATE tb_penghuni SET nama_penghuni = :nama_penghuni, alamat = :alamat WHERE id_Penghuni = :id');
+            $this->db->bind(':id', $id_Penghuni);
+            $this->db->bind(':nama_penghuni', $nama_penghuni);
+            $this->db->bind(':alamat', $alamat);
+            return $this->db->execute();
+        }
     }
 ?>

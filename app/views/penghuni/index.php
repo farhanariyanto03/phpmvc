@@ -25,7 +25,7 @@
                             <td><?php echo $png['alamat']; ?></td>
                             <td>
                                 <form method="POST" action="http://localhost/phpmvc/public/penghuni/deletePenghuni/<?php echo $png['id_Penghuni']; ?>">
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" onclick="return confirm('apakah ingin dihapus')" class="btn btn-danger">Hapus</button>
                                 </form>
                                 <a href="http://localhost/phpmvc/public/penghuni/editPenghuni/<?php echo $png['id_Penghuni']; ?>" class="btn btn-success">Edit</a>
                             </td>

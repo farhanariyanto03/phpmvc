@@ -19,7 +19,7 @@
     <!-- LINK ANIMATE SAAT SCROLL -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>Halaman <?php echo $data['judul']; ?></title>
-    <title>Halaman <?php echo $edit['judul']; ?></title>
+
 </head>
 
 <body>
