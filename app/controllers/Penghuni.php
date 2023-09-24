@@ -17,17 +17,61 @@
             $this->view('penghuni/editPenghuni', $data);
             $this->view('templates/footer');
         }
+
         
+        // public function addPenghuni()
+        // {
+        //     if($this->model('Penghuni_model')->addPenghuni($_POST) > 0){
+        //         Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+        //         header('Location:http://localhost/phpmvc/public/penghuni');
+        //     }else{
+        //         Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+        //         header('Location:http://localhost/phpmvc/public/penghuni');
+        //         exit;
+        //     }
+        // }
         public function addPenghuni()
         {
-            if($this->model('Penghuni_model')->addPenghuni($_POST) > 0){
+            // Set form enctype for file upload
+            $data = $_POST;
+            $foto = $_FILES['foto'];
+
+            // Handle file upload
+            $fotoName = $this->uploadFoto($foto);
+
+            // Add data to the model
+            $data['foto'] = $fotoName;
+            if ($this->model('Penghuni_model')->addPenghuni($data) > 0) {
                 Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-                header('Location:http://localhost/phpmvc/public/penghuni');
-            }else{
+                header('Location: http://localhost/phpmvc/public/penghuni');
+            } else {
                 Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-                header('Location:http://localhost/phpmvc/public/penghuni');
+                header('Location: http://localhost/phpmvc/public/penghuni');
                 exit;
             }
+        }
+
+        // Helper function to handle file upload
+        private function uploadFoto($file)
+        {
+            $namaFile = $file['name'];
+            $ukuranFile = $file['size'];
+            $error = $file['error'];
+            $tmpName = $file['tmp_name'];
+
+            // Check if there is a file uploaded
+            if ($error === 4) {
+                // No file uploaded
+                return "";
+            }
+
+            // Generate a unique name for the file
+            $namaFileBaru = uniqid() . '-' . $namaFile;
+
+            // Move the uploaded file to the desired folder
+            move_uploaded_file($tmpName, 'path/to/your/upload/folder/' . $namaFileBaru);
+
+            return $namaFileBaru;
         }
 
         public function deletePenghuni($id_Penghuni)
@@ -43,11 +87,15 @@
 
         public function updatePenghuni($id_Penghuni)
         {
-            if($this->model('Penghuni_models')->updatePenghuni($_POST) > 0){
+            // Ambil data yang diperlukan dari $_POST
+            $nama_penghuni = $_POST['nama_penghuni'];
+            $alamat = $_POST['alamat'];
+
+            if($this->model('Penghuni_model')->updatePenghuni($id_Penghuni, $nama_penghuni, $alamat) > 0){
                 Flasher::setFlash('berhasil', 'diedit', 'success');
                 header('Location:http://localhost/phpmvc/public/penghuni');
             }else{
-                Flasher::setFlash('gagal', 'diedit', 'danger');
+                Flasher::setFlash('gagal', 'diedit  ', 'danger');
                 header('Location:http://localhost/phpmvc/public/penghuni');
                 exit;
             }
