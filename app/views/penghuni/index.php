@@ -1,7 +1,11 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-6">
-            <h3>Daftar Penghuni</h3>
+            <?php
+            $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+            echo "<h3>Hallo, Selamat Datang $username </h3><br>";
+            ?>
+            <h5>Daftar Penghuni</h5>
             <div class="row">
                 <div class="col-lg-6">
                     <?php Flasher::flash(); ?>
@@ -9,7 +13,10 @@
             </div>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formodal">
                 Tambah
-            </button><br><br>
+            </button>
+            <a href="http://localhost/phpmvc/public/login/" class="btn btn-danger">
+                Keluar
+            </a><br><br>
             <table class="table">
                 <thead>
                     <tr>

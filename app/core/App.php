@@ -33,7 +33,19 @@
             call_user_func_array([$this->controller, $this->method], $this->params);
         }
 
-        // public function __construct()
+        public function parseUrl(){
+            if(isset($_GET['url'])){
+                $url = rtrim($_GET['url'], '/');
+                $url = filter_var($url, FILTER_SANITIZE_URL);
+                $url = explode('/', $url);
+                return $url;
+            }
+        }
+    }
+?>
+
+<?php
+// public function __construct()
         // {
         //     $url = $this->parseUrl();
             
@@ -61,15 +73,4 @@
 
         //     //JALKAN CONTROLLER DAN METHOD SERTA KIRIMKAN PARAMS
         //     call_user_func_array([$this->controller, $this->method], $this->params);
-        // }
-
-        public function parseUrl(){
-            if(isset($_GET['url'])){
-                $url = rtrim($_GET['url'], '/');
-                $url = filter_var($url, FILTER_SANITIZE_URL);
-                $url = explode('/', $url);
-                return $url;
-            }
-        }
-    }
-?>
+        // }?>
