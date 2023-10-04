@@ -11,5 +11,6 @@
             <input type="password" name="password" class="form-control" placeholder="Masukkan Password Anda">
         </div>
         <button type="submit" name="submit" class="btn btn-primary">SUBMIT</button>
+        <a href="http://localhost/phpmvc/public/register/" class="btn btn-success">Register</a>
     </form>
 </div>

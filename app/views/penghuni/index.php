@@ -35,7 +35,7 @@
                             <td><?php echo $png['alamat']; ?></td>
                             <td><?php echo $png['jenis_kelamin']; ?></td>
                             <td><?php echo $png['agama']; ?></td>
-                            <td><?php echo $png['foto']; ?></td>
+                            <td><img src="http://localhost/phpmvc/public/public/image/<?php echo $png['foto']; ?>" alt="Foto Penghuni"></td>
                             <td>
                                 <form method="POST" action="http://localhost/phpmvc/public/penghuni/deletePenghuni/<?php echo $png['id_Penghuni']; ?>">
                                     <button type="submit" onclick="return confirm('apakah ingin dihapus')" class="btn btn-danger">Hapus</button>
